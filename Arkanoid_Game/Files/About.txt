@@ -1,0 +1,4 @@
+Arkanoid is an arcade game developed by Taito in 1986. It is based upon Atari's Breakout
+games of the 1970s. The title refers to a doomed "mothership" from which the Vaus, the 
+player's controller, escapes. ... The survivors roam the galaxy on their photon spaceship
+Arkanoid in search of a new home.
