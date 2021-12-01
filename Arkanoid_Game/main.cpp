@@ -14,17 +14,14 @@ int main()
 		Menu_Keypress();
 	}
 	
-	//keyb.reset_terminal();
 	
 	Show_Game_Board();
 	
-	while(true)
+	while(!GameOver)
 	{
 		Show_Platform_Coord();
 		Show_Ball_Coord();
 	}
-	
-	//keyb.reset_terminal();
 	
 	return 0;
 }

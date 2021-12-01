@@ -1,52 +1,58 @@
 #ifndef _BALL
 #define _BALL
 
+
 #include <iostream>
+#include <unistd.h>
+
+#include "ball.hpp"
+#include "header.hpp"
 #include "platform.hpp"
 
 enum Ball_Move {UP_RIGHT, UP_LEFT, DOWN_RIGHT, DOWN_LEFT};
-Ball_Move Move = DOWN_RIGHT;
+static Ball_Move Move = DOWN_RIGHT;
 
-struct Ball
+class Ball
 {
-	int x_coord;	//	66
-	int y_coord;	//  28
+	public:
+		int x_coord;	//	66
+		int y_coord;	//  28
 	
-	Ball() : x_coord(66), y_coord(27), temp_x(0), temp_y(0) {}
+		Ball() : x_coord(66), y_coord(27), temp_x(0), temp_y(0)
+		{}
 	
-	void Modify_Ball_Coord()
-	{
-		temp_x = x_coord;
-		temp_y = y_coord;
-		
-		Modify_Ball_Move();
-		
-		switch(Move)
+		void Modify_Ball_Coord()
 		{
-			case UP_RIGHT: { 
-				--y_coord;
-				++x_coord;
-				break;
-			}
-			case UP_LEFT: { 
-				--y_coord;
-				--x_coord;
-				break;
-			}
-			case DOWN_RIGHT: { 
-				++y_coord;
-				++x_coord;
-				break;
-			}
-			case DOWN_LEFT: { 
-				++y_coord;
-				--x_coord;
-				break;
+			temp_x = x_coord;
+			temp_y = y_coord;
+			
+			Modify_Ball_Move();
+			
+			switch(Move)
+			{
+				case UP_RIGHT: { 
+					--y_coord;
+					++x_coord;
+					break;
+				}
+				case UP_LEFT: { 
+					--y_coord;
+					--x_coord;
+					break;
+				}
+				case DOWN_RIGHT: { 
+					++y_coord;
+					++x_coord;
+					break;
+				}
+				case DOWN_LEFT: { 
+					++y_coord;
+					--x_coord;
+					break;
+				}
 			}
 		}
-	}
-	
-	void Print()
+		void Print()
 	{
 		
 		gotoxy(temp_x,temp_y);
@@ -61,8 +67,8 @@ struct Ball
 		}
 		else 
 		{
-			gotoxy(0,0);
-			exit(0);
+			GameOver = true;
+			EndGame();
 		}
 	}
 	
@@ -162,6 +168,7 @@ struct Ball
 		}
 };
 
-Ball ball;
+static Ball ball;
+
 
 #endif

@@ -9,9 +9,9 @@
 #include "header.hpp"
 
 bool game_not_started = true;
-static int last_index_Menu = 0, first_index_Menu = 0;
-static const int x_Text = 64;
-static int first_y_Text = 15 , last_y_Text = 15;
+int last_index_Menu = 0, first_index_Menu = 0;
+const int x_Text = 64;
+int first_y_Text = 15 , last_y_Text = 15;
 
 void Print_Modify_Menu();
 void Menu_KeyPress();
@@ -91,8 +91,6 @@ void Open_StartGame()
 	game_not_started = false;
 	keyb.reset_terminal();
 	constexpr int nick_size = 10;
-	int score = 1900;
-	std::string nick;
 	std::cout << "\t\t\t\t\t\t\tNickname : " << std::flush;
 	std::getline(std::cin,nick);
 	keyb.new_settings_terminal();
@@ -102,21 +100,6 @@ void Open_StartGame()
 	}else nick = "Player";
 	std::string space_str_nick(12 - nick.size(), ' ');
 	nick += space_str_nick;
-	
-	std::ofstream fout;
-	fout.open("Files/Score.txt", std::ios::out | std::ios::app);
-	if(!fout.is_open())
-	{
-		system("clear");
-		std::cout << "!!! Error Open the File !!!\n";
-		exit(0);
-	}
-	else
-	{
-		fout << "|   " << nick << "| \t" << score << "\t |\n"; 
-		
-	}
-	fout.close();
 }
 
 void Open_Score()
