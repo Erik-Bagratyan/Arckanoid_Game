@@ -17,6 +17,7 @@ class keyboard{
         int peek_character;
 };
 
+
 void gotoxy(int,int);
     
 #endif

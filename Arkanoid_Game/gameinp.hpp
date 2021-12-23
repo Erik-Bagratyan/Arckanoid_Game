@@ -5,8 +5,9 @@
 #include <string>
 
 #include "show.hpp"
-#include "termio.hpp"
-#include "header.hpp"
+//#include "termio.hpp"
+#include "globalobjects.hpp"
+
 
 bool game_not_started = true;
 int last_index_Menu = 0, first_index_Menu = 0;
@@ -34,7 +35,6 @@ void Menu_Keypress()
 			{
 				Open_Menu(first_index_Menu);
 				system("clear");
-				Show_Game_Name();
 				Show_Game_Menu(first_index_Menu);
 				break;
 			}
@@ -89,9 +89,9 @@ void Open_Menu(int index_Menu)
 void Open_StartGame()
 {
 	game_not_started = false;
-	keyb.reset_terminal();
 	constexpr int nick_size = 10;
 	std::cout << "\t\t\t\t\t\t\tNickname : " << std::flush;
+	keyb.reset_terminal();
 	std::getline(std::cin,nick);
 	keyb.new_settings_terminal();
 	if(nick != "")

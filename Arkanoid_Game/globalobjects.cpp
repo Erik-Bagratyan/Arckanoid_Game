@@ -1,10 +1,17 @@
 #include <iostream>
 
-#include "header.hpp"
+#include "globalobjects.hpp"
 #include <fstream>
 
+
+keyboard keyb;
+Plform plform;
+std::string nick;
+std::vector<std::pair<Bricks,bool>> bricks_vec;
+
+std::vector<std::pair<int,int>> data_coords;
 int lvl_lifes_score[3] = {1 , 3, 0};
-int bricks[3] = {10, 15, 20}; 
+int bricks[3] = {15, 20, 25}; 
 bool GameOver = false;
 
 void EndGame()
@@ -18,8 +25,8 @@ void EndGame()
 		exit(0);
 	}
 	else
-	{
-		fout << "|   " << nick << "| \t" << lvl_lifes_score[3] << "\t |\n"; 		
+	{	
+		fout << "|   " << nick << "| \t" << lvl_lifes_score[2] << "\t |\n"; 		
 	}
 	fout.close();
 				

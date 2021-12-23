@@ -3,7 +3,8 @@
 #include "bricks.hpp"
 #include "termio.hpp"
 #include "ball.hpp"
-#include "header.hpp"
+#include "globalobjects.hpp"
+
 
 int Bricks :: bricks_length = 15;
 
@@ -32,28 +33,25 @@ void Bricks :: print_bricks() const
 	}
 }
 
-bool Bricks :: is_collide()
+int Bricks :: len() const
 {
-	if(ball.y_coord != bricks_pieces[0].second)
-		return false;
+	return bricks_length;
+}
 
-	const int bricks_start_coord_x = bricks_pieces[0].first;
-	const int bricks_end_coord_x = bricks_pieces[bricks_pieces.size() - 1].first;
-	if(ball.x_coord < bricks_start_coord_x || ball.x_coord > bricks_end_coord_x)
-		return false;
-		
-	for(const std::pair<int,int>& elem : bricks_pieces)
-	{
-		if(elem.first == ball.x_coord)
-			return true; 
-	}
-	
-	return false;
+
+int Bricks :: get_y_coord() const
+{
+	return bricks_pieces[0].second;
 }
 
 int Bricks :: get_coord_right_pieces() const
 {
-	return bricks_pieces[bricks_pieces.size() - 1].first + 2;
+	return bricks_pieces[bricks_pieces.size() - 1].first + 3;
+}
+
+int Bricks :: get_coord_left_pieces() const
+{
+	return bricks_pieces[0].first;
 }
 
 void Bricks :: bricks_change_of_state()

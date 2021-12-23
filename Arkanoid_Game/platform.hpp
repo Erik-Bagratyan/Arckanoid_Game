@@ -1,23 +1,26 @@
 #ifndef _PLATFORM
 #define _PLATFORM
 
+#include <vector>
+
 class Plform
 {
-	public:
-	int pform_x_coord[14];
-	const int y_coord = 28;
-	int temp_x_coord_left, temp_x_coord_right;
+public:
+	Plform();
+	void change_coord();
+	void print() const;
+	int get_length() const;
+	std::vector<int> get_pform() const;
 		
-
-		Plform();
-		
-		void Modify_Platform_Coord();
-		
-		void Print();
-		
-		private:
-			void Move_Platform_Left();
-			void Move_Platform_Right();
+	std::vector<int> pform_position;	
+private:
+	int pl_left_x;
+	int pl_right_x;
+	const int pl_y;
+	const int platform_length;
+	
+	void Move_Platform_Left();
+	void Move_Platform_Right();
 };
 
 
